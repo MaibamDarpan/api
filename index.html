@@ -20,6 +20,9 @@
     <input type="text" id="body" placeholder="Product">
     <br>
     <button id="submit">Submit</button>
+    <br>
+    <h2 id="activity">Take a class</h2>
+    <h3>Learn From Here: <a id="explore" href="">Visit This Page</a></h3>
 
     <script>
        fetch('https://jsonplaceholder.typicode.com/users')
@@ -71,6 +74,19 @@
         .then((response) => response.json())
         .then((data) => console.log(data));
         }
+
+        // Fun API
+        function findTask(){
+            fetch('http://www.boredapi.com/api/activity/')
+        .then( res => res.json())
+        .then( activity => {
+            document.getElementById('activity').innerText = activity.activity;
+        })
+        }
+        findTask();
+        setInterval(() => {
+            findTask();
+        }, 5000);
 
     </script>
 </body>
